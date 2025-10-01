@@ -1,7 +1,8 @@
 package br.com.artgen.repositories;
 
 import br.com.artgen.models.ArtigoModel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ArtigoRepository extends JpaRepository<ArtigoModel, Long>{
+@Repository
+public interface ArtigoRepository {
 }
