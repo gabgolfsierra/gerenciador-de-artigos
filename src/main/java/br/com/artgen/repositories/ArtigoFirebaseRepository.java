@@ -42,4 +42,23 @@ public class ArtigoFirebaseRepository {
         }
     }
 
+    public ArtigoModel buscarPorId(Long id) {
+        try {
+            Firestore db = db();
+            DocumentReference ref = db.collection(COLLECTION).document(String.valueOf(id));
+            ApiFuture<DocumentSnapshot> future = ref.get();
+            DocumentSnapshot snapshot = future.get();
+
+            if (!snapshot.exists()) {
+                return null;
+            }
+
+            return snapshot.toObject(ArtigoModel.class);
+
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

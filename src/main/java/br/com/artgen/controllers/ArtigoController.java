@@ -31,8 +31,20 @@ public class ArtigoController {
         }
     }
 
+    @GetMapping
     public ResponseEntity<?> listar() {
         return ResponseEntity.ok(service.listarTodos());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
+        ArtigoModel artigo = service.buscarPorId(id);
+
+        if (artigo == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Artigo não encontrado: " + id);
+        }
+
+        return ResponseEntity.ok(artigo);
+    }
 }

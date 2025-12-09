@@ -23,6 +23,10 @@ public class ArtigoService {
         return repository.salvar(artigo);
     }
 
+    public ArtigoModel buscarPorId(Long id) {
+        return repository.buscarPorId(id);
+    }
+
     public List<ArtigoModel> listarTodos() {
         return repository.listarTodos();
     }
